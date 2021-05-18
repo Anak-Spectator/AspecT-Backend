@@ -1,0 +1,56 @@
+version: "3.1"
+
+services:
+    apps:
+        container_name: aspect_app
+        build: ./backend/apps
+        restart: always
+        volumes:
+            - ./backend:/app
+        ports:
+            - 7000:7000
+        depends_on:
+            - rabbitmq
+            - sql_db
+            - redis_db
+        networks:
+            - aspect_network
+        environment: 
+            ENV: prod
+
+    rabbitmq:
+        image: rabbitmq:3-management-alpine
+        # image: rabbitmq:alpine
+        container_name: rabbitmq
+        # ports:
+        #   - 5672:5672   # for sender and consumer connections
+        #   - 15672:15672 # for serve RabbitMQ GUI
+        volumes:
+          - ./dabatase/rabbitmq/data/:/var/lib/rabbitmq
+          - ./database/rabbitmq/log/:/var/log/rabbitmq
+        restart: always
+        networks:
+            - aspect_network
+
+    redis_db:
+        container_name: redis_db
+        image: redis:alpine
+        restart: always
+        networks:
+            - aspect_network
+
+    sql_db:
+        container_name: sql_db
+        image: postgres:alpine
+        restart: always
+        networks:
+            - aspect_network
+        environment:
+            POSTGRES_PASSWORD : "test_password"
+            POSTGRES_USER : "root"
+            POSTGRES_DB : "aspect"
+    
+
+networks:
+    aspect_network:
+        driver: bridge
