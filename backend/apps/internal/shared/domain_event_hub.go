@@ -35,7 +35,7 @@ func (hub *DomainEventHub) Start() {
 	go func() {
 		for {
 			event := <-hub.events
-			log.Printf("PROCESSING EVENT %s", event.Name())
+			log.Printf("PROCESSING EVENT : %s", event.Name())
 			for _, handler := range hub.eventHandlers[event.Name()] {
 				go handler(event)
 			}

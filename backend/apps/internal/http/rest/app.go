@@ -14,19 +14,26 @@ TODO
 
 [ ] Define All Each Service
 	[ ] Parrent
-		[ ]
+		[ ] Edit info
+		[ ] Add new child
+			[ ] add image to child
 
 	[ ] Children
+		[ ] Check if id exist
+		[ ] Send Text within the children id
 		[ ]
 
 	[ ] Profanity
-		[ ]
+		[ ] Send to ML service using Rabbit
 
 	[ ] Auth
-		[ ]
+		[ ] Sign up
+		[ ] Sign in
 
 	[ ] Reporting
-		[ ]
+		[ ] Reporting Each Day
+		[ ] Reporting Each Week
+		[ ] Reporting Each Month
 */
 
 type Service struct {
@@ -34,17 +41,22 @@ type Service struct {
 }
 
 type App struct {
-	app         *fiber.App
+	app *fiber.App
+
+	// Grouping API
 	apiParent   fiber.Router
 	apiChildren fiber.Router
-	service     *Service
+	// End Of Grouping API
+
+	// Interface for each service
+	service *Service
 }
 
 func NewApp(service *Service) *App {
 	app := fiber.New(fiber.Config{})
 	return &App{
 		app:         app,
-		apiParent:   app.Group("/parrent"),
+		apiParent:   app.Group("/parrent"), // as an account
 		apiChildren: app.Group("/children"),
 		service: &Service{
 			Test: service.Test,
