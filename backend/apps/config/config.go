@@ -65,7 +65,7 @@ func DefaultConfig() (Config, error) {
 	env := os.Getenv("ENV")
 
 	if env == "" {
-		os.Setenv("MODE", "prod")
+		os.Setenv("ENV", "prod")
 		env = "prod"
 	}
 
