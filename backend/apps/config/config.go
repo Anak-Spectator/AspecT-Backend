@@ -44,6 +44,7 @@ type RedisConfig struct {
 }
 
 type Config struct {
+	ENV            string         `mapstructure:"env"`
 	App            AppsConfig     `mapstructure:"apps"`
 	MLSevice       MLConfig       `mapstructure:"ml_profanity"`
 	GormConfig     GormConfig     `mapstructure:"gorm"`
@@ -54,7 +55,7 @@ type Config struct {
 
 func DefaultConfig() (Config, error) {
 
-	if os.Getenv("MODE") != "DOCKER" {
+	if os.Getenv("ENV") != "DOCKER" {
 		err := godotenv.Load()
 		if err != nil {
 			log.Fatal("Error loading .env file")
@@ -64,6 +65,7 @@ func DefaultConfig() (Config, error) {
 	env := os.Getenv("ENV")
 
 	if env == "" {
+		os.Setenv("MODE", "prod")
 		env = "prod"
 	}
 

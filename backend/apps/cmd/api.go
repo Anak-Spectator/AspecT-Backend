@@ -7,19 +7,24 @@ import (
 	"fmt"
 )
 
+var (
+	conf config.Config
+	err  error
+)
+
 func init() {
-	fmt.Printf("is run")
+	conf, err = config.DefaultConfig()
+	if err != nil {
+		panic(err)
+	}
+	shared.BeautyCli(conf.ENV)
 }
 
 func StartAPI() {
 
 	var service rest.Service
 	domainEvent := shared.NewDomainEventHub()
-	conf, err := config.DefaultConfig()
 
-	if err != nil {
-		panic(err)
-	}
 	// Define all service
 
 	// End of defining each service
