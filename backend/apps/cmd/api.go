@@ -67,7 +67,8 @@ func StartAPI() {
 	// ! === End of defining each service === !
 
 	// ? === injecting app service Start === ?
-	service.AccSvc = accSvc
+	service.
+		NewAccountMainService(accSvc)
 	// ? ====== injecting service End ====== ?
 
 	// ! ==== Event Driven Service Start ==== !

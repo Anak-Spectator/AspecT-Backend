@@ -38,7 +38,14 @@ TODO
 */
 
 type Service struct {
-	AccSvc *AccountMainService
+	accSvc *AccountMainService
+}
+
+func (svc *Service) NewAccountMainService(accSvc *AccountMainService) *Service {
+	svc.accSvc = accSvc
+	return &Service{
+		accSvc: svc.accSvc,
+	}
 }
 
 type App struct {
@@ -64,7 +71,7 @@ func NewApp(service *Service) *App {
 		apiUser:  apiV1.Group("/user"),  // for user purpose
 		apiAdmin: apiV1.Group("/admin"), // for admin purpose "develope soon"
 		service: &Service{
-			AccSvc: service.AccSvc,
+			accSvc: service.accSvc,
 		},
 	}
 }
