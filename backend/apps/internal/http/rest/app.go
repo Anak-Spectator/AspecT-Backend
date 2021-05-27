@@ -1,6 +1,7 @@
 package rest
 
 import (
+	"errors"
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"
@@ -24,7 +25,7 @@ TODO
 		[ ]
 
 	[ ] Profanity
-		[ ] Send to ML service using Rabbit
+		[ ] Send to ML service using Goroutine
 
 	[ ] Auth
 		[ ] Sign up
@@ -37,15 +38,17 @@ TODO
 */
 
 type Service struct {
-	Test string
+	AccSvc *AccountMainService
 }
 
 type App struct {
 	app *fiber.App
 
+	apiV1 fiber.Router // Independent Router
+
 	// Grouping API
-	apiParent   fiber.Router
-	apiChildren fiber.Router
+	apiUser  fiber.Router
+	apiAdmin fiber.Router
 	// End Of Grouping API
 
 	// Interface for each service
@@ -54,21 +57,31 @@ type App struct {
 
 func NewApp(service *Service) *App {
 	app := fiber.New(fiber.Config{})
+	apiV1 := app.Group("/api/v1")
 	return &App{
-		app:         app,
-		apiParent:   app.Group("/parrent"), // as an account
-		apiChildren: app.Group("/children"),
+		app:      app,
+		apiV1:    apiV1,
+		apiUser:  apiV1.Group("/user"),  // for user purpose
+		apiAdmin: apiV1.Group("/admin"), // for admin purpose "develope soon"
 		service: &Service{
-			Test: service.Test,
+			AccSvc: service.AccSvc,
 		},
 	}
 }
 
-func (fiberApp *App) StartApp(port string) {
+func (fiberApp *App) StartApp(key, port string) {
 
 	// Define the app
 	app := fiberApp.app
 
+	// Header Api KEY
+	app.Use(func(c *fiber.Ctx) error {
+		apiKey := c.Get("api_key", "")
+		if apiKey != key {
+			return c.Status(fiber.StatusForbidden).JSON(newErrorResp(errors.New("forbidden unknow client")))
+		}
+		return c.Next()
+	})
 	// Recovery when get PANIC
 	app.Use(recover.New(recover.ConfigDefault))
 
@@ -79,7 +92,13 @@ func (fiberApp *App) StartApp(port string) {
 	app.Use(logger.New())
 
 	// Start Each Service Routes
-	fiberApp.initChildrenRoutes()
+	fiberApp.apiOk()                    // Start Endpoint
+	fiberApp.initPublicChildrenRoutes() // indpendent public children route
+	fiberApp.InitAuthRoutes()           // for auth
+	// Private API Start Here
+	fiberApp.initUserChildrenRoutes() // for user children
+	// Private API End
+
 	// End Each Service Routes
 
 	// Handle 404

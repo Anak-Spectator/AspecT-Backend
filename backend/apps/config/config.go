@@ -18,6 +18,7 @@ type AppsConfig struct {
 	AuthSecretKey      string `mapstructure:"auth_secret_key"`
 	ChildrenSecretKey  string `mapstructure:"children_secret_key"`
 	ProfanitySecretKey string `mapstructure:"profanity_secret_key"`
+	ApiKey             string `mapstructure:"api_key"`
 	JWT                JWT    `mapstructure:"jwt"`
 }
 

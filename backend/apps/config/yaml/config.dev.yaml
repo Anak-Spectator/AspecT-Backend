@@ -7,6 +7,7 @@ apps:
   auth_secret_key: "auth_secret_key"
   children_secret_key: "children_secret_key"
   profanity_secret_key: "profanity_secret_key"
+  api_key : "test_key"
   jwt:
     salt: "bumbu"
 
@@ -18,7 +19,7 @@ gorm:
   dialect: "postgres"
 
 postgres:
-  url: "sslmode=disable host=localhost port=5432 user=postgres dbname=aspect password=test"
+  url: "sslmode=disable host=localhost port=5432 user=postgres dbname=aspect_db password=test100"
 
 rabbitmq:
   url: "amqp://guest:guest@rabbitmq:5672/"

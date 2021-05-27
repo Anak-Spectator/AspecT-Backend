@@ -12,7 +12,7 @@ type Account struct {
 	ID             AccountID
 	FullName       string
 	Email          shared.Email
-	Password       string
+	HashedPassword HashedPassword
 	ProfilePicture shared.DataLakeLink
 	CreateAt       time.Time
 }
@@ -22,7 +22,7 @@ func NewAccount(acc *Account) *Account {
 		ID:             acc.ID,
 		FullName:       acc.FullName,
 		Email:          acc.Email,
-		Password:       acc.Password,
+		HashedPassword: acc.HashedPassword,
 		ProfilePicture: acc.ProfilePicture,
 		CreateAt:       time.Now().UTC(),
 	}
@@ -37,7 +37,7 @@ func (acc *Account) Validate() error {
 		return err
 	}
 
-	if acc.Password != "" {
+	if acc.HashedPassword != "" {
 		return errors.New("password are required")
 	}
 

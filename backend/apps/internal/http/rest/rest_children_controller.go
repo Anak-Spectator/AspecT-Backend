@@ -1,6 +1,8 @@
 package rest
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/gofiber/fiber/v2"
+)
 
 func ChildrenGreat() func(*fiber.Ctx) error {
 	return func(c *fiber.Ctx) error {
