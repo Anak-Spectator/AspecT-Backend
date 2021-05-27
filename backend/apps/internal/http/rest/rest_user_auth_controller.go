@@ -15,7 +15,6 @@ func userLogin(svc *accountapp.AccountApplicationService) func(c *fiber.Ctx) err
 
 func userRegister(svc *accountapp.AccountApplicationService) func(c *fiber.Ctx) error {
 	return func(c *fiber.Ctx) error {
-		txt := svc.Test("bos")
-		return c.Status(fiber.StatusOK).JSON(newResp(txt, txt))
+		return c.Status(fiber.StatusOK).JSON(fiber.Map{"hellow": "register"})
 	}
 }

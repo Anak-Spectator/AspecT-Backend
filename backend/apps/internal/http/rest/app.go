@@ -39,13 +39,17 @@ TODO
 
 type Service struct {
 	accSvc *AccountMainService
+	ssSvc  *AccountMainService
 }
 
-func (svc *Service) NewAccountMainService(accSvc *AccountMainService) *Service {
+func (svc *Service) NewInjectAccountService(accSvc *AccountMainService) *Service {
 	svc.accSvc = accSvc
-	return &Service{
-		accSvc: svc.accSvc,
-	}
+	return &Service{}
+}
+
+func (svc *Service) NewInjectSService(ss *AccountMainService) *Service {
+	svc.ssSvc = ss
+	return &Service{}
 }
 
 type App struct {
@@ -72,6 +76,7 @@ func NewApp(service *Service) *App {
 		apiAdmin: apiV1.Group("/admin"), // for admin purpose "develope soon"
 		service: &Service{
 			accSvc: service.accSvc,
+			ssSvc:  service.accSvc,
 		},
 	}
 }
