@@ -1,0 +1,59 @@
+# @baseUrl = http://localhost:7000/api/v1/user
+
+@baseUrl = http://34.101.232.107:7000/api/v1/user
+
+### Get a random clever quote
+GET {{baseUrl}}/profanity
+Accept: application/hal+json
+
+
+### POST NEW BAD WORD AND STORE TO DB
+POST {{baseUrl}}/profanity/send
+Content-Type: application/json
+
+{
+    "texts":[
+        {
+            "text":"ini text motherfucker",
+            "time":"08-04-2021"
+        },
+        {
+            "text":"hai you",
+            "time":"08-04-2021"
+        },
+        {
+            "text":"bitch",
+            "time":"08-04-2021"
+        },
+        {
+            "text":"hello",
+            "time":"08-04-2021"
+        },
+        {
+            "text":"suck a dick",
+            "time":"08-04-2021"
+        },
+        {
+            "text":"fuck your ass",
+            "time":"08-04-2021"
+        },
+        {
+            "text":"okey shut the fuck up",
+            "time":"08-04-2021"
+        },
+        {
+            "text":"mantap bitch",
+            "time":"08-04-2021"
+        },
+        {
+            "text":"whatup my nigga",
+            "time":"08-04-2021"
+        }
+
+    ]
+}
+
+
+### GET NO DATA TEXT : Untuk mengecek list yang di tangkap server
+GET {{baseUrl}}/check
+Accept: application/hal+json

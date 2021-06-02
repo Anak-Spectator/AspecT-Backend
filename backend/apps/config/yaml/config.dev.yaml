@@ -1,0 +1,30 @@
+env: "dev"
+
+# Apps inner service config
+apps:
+  port: ${APPS_PORT}
+  account_secret_key: "account_secret_key"
+  auth_secret_key: "auth_secret_key"
+  children_secret_key: "children_secret_key"
+  profanity_secret_key: "profanity_secret_key"
+  api_key : "test_key"
+  jwt:
+    salt: "bumbu"
+
+# Machine learning service
+ml_profanity:
+  url: ${APPS_ML_URL}
+
+gorm:
+  dialect: "postgres"
+
+postgres:
+  url: "sslmode=disable host=localhost port=5432 user=postgres dbname=aspect_db password=test100"
+
+rabbitmq:
+  url: "amqp://guest:guest@rabbitmq:5672/"
+
+redis:
+  url: "redis_db:6379"
+  password: "test"
+  db: 0
