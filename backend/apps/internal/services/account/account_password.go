@@ -30,7 +30,7 @@ func (password Password) Validate() error {
 	return nil
 }
 
-func (password Password) Hash(hasher Hasher) (HashedPassword, error) {
+func (password Password) Hash(hasher shared.Hasher) (HashedPassword, error) {
 	hashedPassword, err := hasher.Hash(string(password))
 	if err != nil {
 		if errors.Is(err, &shared.InfrastructureError{}) {
@@ -44,6 +44,6 @@ func (password Password) Hash(hasher Hasher) (HashedPassword, error) {
 
 type HashedPassword string
 
-func (hashedPassword HashedPassword) Match(hasher Hasher, password Password) bool {
+func (hashedPassword HashedPassword) Match(hasher shared.Hasher, password Password) bool {
 	return hasher.IsInputHashSimilar(string(password), string(hashedPassword))
 }

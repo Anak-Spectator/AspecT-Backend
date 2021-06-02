@@ -1,4 +1,4 @@
-package account
+package shared
 
 type Hasher interface {
 	Hash(input string) (string, error)

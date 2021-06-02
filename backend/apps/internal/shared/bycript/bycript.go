@@ -1,4 +1,4 @@
-package accountinfra
+package bycript
 
 import (
 	"aspect_apps/internal/shared"

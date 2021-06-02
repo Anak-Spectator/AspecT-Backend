@@ -5,7 +5,8 @@ import (
 )
 
 type AccountApplicationService struct {
-	accRepo account.AccountRepository
+	accRepo    account.AccountRepository
+	accFactory account.AccountFactory
 	// accQuery *account.AccountQuery
 }
 
@@ -17,4 +18,18 @@ func NewAccountApplicationService(accRepo account.AccountRepository) *AccountApp
 
 func (svc *AccountApplicationService) Test(str string) string {
 	return str
+}
+
+func (svc *AccountApplicationService) RegisterNewUser() {
+
+}
+
+func (svc *AccountApplicationService) EditUserProfile() {
+}
+
+func (svc *AccountApplicationService) UploadProfileImage() {
+}
+
+func (svc *AccountApplicationService) DeleteProfileImage() {
+
 }
