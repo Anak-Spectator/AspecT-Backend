@@ -56,17 +56,17 @@ make remove
 ## Resources
 
 ## Todo's
-- [] Account Service
+- [ ] Account Service
 
-- [] Auth Service
+- [ ] Auth Service
 
-- [] Children Service
+- [ ] Children Service
 
-- [] Profanity Service
+- [ ] Profanity Service
 
-- [] Reporting Service
+- [ ] Reporting Service
 
-- [] AI Service (using AI Google Platform)
+- [ ] AI Service (using AI Google Platform)
 
 
 ## Team
