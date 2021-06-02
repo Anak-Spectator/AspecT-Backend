@@ -14,11 +14,11 @@ Aspect Backend
 ## Documentation
 Before start the project localy, make sure to all tools has been installed on your machine such:
 
--[X]    Golang
+- [X]    Golang
 
--[X]    Python
+- [X]    Python
 
--[X]    Docker
+- [X]    Docker
 
 #### HOW TO RUN
 ##### GOLANG
@@ -56,17 +56,17 @@ make remove
 ## Resources
 
 ## Todo's
--[] Account Service
+- [] Account Service
 
--[] Auth Service
+- [] Auth Service
 
--[] Children Service
+- [] Children Service
 
--[] Profanity Service
+- [] Profanity Service
 
--[] Reporting Service
+- [] Reporting Service
 
--[] AI Service (using AI Google Platform)
+- [] AI Service (using AI Google Platform)
 
 
 ## Team
