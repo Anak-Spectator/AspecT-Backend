@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from controllers.bad_word_controllers import post_new_bad_word
+from controllers.bad_word_controllers import check_new_bad_word
 from utils.resp_out import err_resp, new_resp
 from utils import status_code
 import json
