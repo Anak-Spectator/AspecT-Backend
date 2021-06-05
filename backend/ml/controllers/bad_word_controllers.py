@@ -1,30 +1,16 @@
-from posixpath import dirname
-from better_profanity import profanity
 import os
+import csv
+import time
+from better_profanity import profanity
+from utils.helper import get_user_id, open_dir
 
+def add_bad_word(text):
+    user_id = get_user_id()
+    with open(os.path.join(open_dir("assets"), user_id), mode='a') as f:
+        writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        writer.writerow([user_id,text,time.time()])
 
-def post_new_bad_word(text_list=[{"text": "", "time": ""}]):
-    if len(text_list) == 1 and text_list[0]["time"] == "":
-        return None, "there is no text"
-
-    data = []
-    text = []
-
-    for dict in text_list:
-        for key, val in dict.items():
-            is_bad = False
-            if key == "text":
-                is_bad = profanity.contains_profanity(val)
-
-            if is_bad:
-                data.append({"text": dict["text"], "date": dict["date"]})
-                text.append(dict["text"])
-    rootDir = os.path.abspath(os.getcwd())
-    assetsDir = os.path.join(rootDir,"assets")
-    with open(os.path.join(assetsDir,"textList.txt"), "r+") as f:
-        f.truncate(0)
-        f.writelines("\n".join(text))
-        f.close()
-        # pass
-
-    return {"texts": data}, None
+def check_new_bad_word(textList):
+    for word in list(textList.split("  ")):
+        if profanity.contains_profanity(word) == True:
+            add_bad_word(word)
