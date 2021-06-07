@@ -23,7 +23,7 @@ def init_list_profanity_routes(app):
             with open(os.path.join(assetsDir, userId), "r+") as f:
                 for line in f:
                     sline = line.rstrip()
-                    listBad.append({"text":sline,"id":userId,"date":"08-04-2021"})
+                    listBad.append({"text":sline,"id":userId,"timestamp":"08-04-2021"})
             
             return (
                 jsonify(new_resp("success send data", {"texts": listBad}, status_code.CREATED)),

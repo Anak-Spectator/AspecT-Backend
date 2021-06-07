@@ -17,7 +17,7 @@ def post_new_bad_word(text_list=[{"text": "", "time": ""}]):
                 is_bad = profanity.contains_profanity(val)
 
             if is_bad:
-                data.append({"text": dict["text"], "date": dict["date"]})
+                data.append({"text": dict["text"], "timestamp": dict["timestamp"]})
                 text.append(dict["text"])
     rootDir = os.path.abspath(os.getcwd())
     assetsDir = os.path.join(rootDir,"assets")

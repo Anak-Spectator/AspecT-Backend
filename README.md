@@ -20,6 +20,20 @@ Before start the project localy, make sure to all tools has been installed on yo
 
 - [X]    Docker
 
+## About The Project(Technical)
+#### Apps (Service)
+> You may ask why we use golang?
+
+we use golang because it's FAST and the framework that we use is fiber, the fastest server, just take a look at this benchmark
+<img src="./.github/images/benchmark-pipeline.png">
+> benchmark from other framework
+
+for the archicteture it self, we use DDD and Event Driven Architecture for build microservice between each service [See reference here](./#reference)
+
+#### Reference
+
+
+
 #### HOW TO RUN
 ##### GOLANG
 
