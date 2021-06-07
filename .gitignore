@@ -153,3 +153,5 @@ database
 
 # Production config
 *.prod.*
+
+.vscode
