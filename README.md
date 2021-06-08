@@ -47,8 +47,11 @@ in ml service, we implement MVC pattern for the project architecture [See refere
 
 #### Additional Tool's / Package / Libs / Module and Service
 [Apps](https://github.com/Anak-Spectator/AspecT-Backend/blob/master/backend/apps/go.mod)
+
 [ML](https://github.com/Anak-Spectator/AspecT-Backend/blob/master/backend/ml/requirements.txt) => **(mock server)**
+
 [AI](https://github.com/Anak-Spectator/AspecT-ML)
+
 
 #### HOW TO RUN
 ##### GOLANG
