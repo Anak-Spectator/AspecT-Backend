@@ -46,11 +46,9 @@ in ml service, we implement MVC pattern for the project architecture [See refere
 -   [MVC](https://shravan-c.medium.com/mvc-for-flask-application-a636e6f58d72)
 
 #### Additional Tool's / Package / Libs / Module and Service
-[Apps](https://github.com/Anak-Spectator/AspecT-Backend/blob/master/backend/apps/go.mod)
-
-[ML](https://github.com/Anak-Spectator/AspecT-Backend/blob/master/backend/ml/requirements.txt) => **(mock server)**
-
-[AI](https://github.com/Anak-Spectator/AspecT-ML)
+- [Apps](https://github.com/Anak-Spectator/AspecT-Backend/blob/master/backend/apps/go.mod)
+- [ML](https://github.com/Anak-Spectator/AspecT-Backend/blob/master/backend/ml/requirements.txt) => **(mock server)**
+- [AI](https://github.com/Anak-Spectator/AspecT-ML)
 
 
 #### HOW TO RUN
