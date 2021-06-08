@@ -30,7 +30,7 @@ we use golang because it's FAST and the framework that we use is fiber, the fast
 <img src="./.github/images/benchmark-pipeline.png">
 > benchmark from other framework
 
-for the archicteture it self, we use DDD/Hexagonal in golang, MVC(Model View Controller) in python, and use Event Driven Architecture for build microservice between each service [See reference here](./#reference)
+for the archicteture it self, we use DDD/Hexagonal in golang, MVC(Model View Controller) in python, and use Event Driven Architecture for build microservice between each service [See reference here](https://github.com/Anak-Spectator/AspecT-Backend#reference)
 
 #### Reference
 -   [DDD](https://engineering.grab.com/domain-driven-development-in-golang)
