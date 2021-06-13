@@ -26,7 +26,8 @@ Before start the project localy, make sure to all tools has been installed on yo
 #### Apps (Service)
 > You may ask why we use golang?
 
-we use golang because it's FAST, and the framework we use for this project is called [fiber](https://github.com/gofiber/fiber), the fastest and rapid development server build for golang and inspired by express.js. 
+we use golang because it's FAST, and the framework we use for this project is called [fiber](https://github.com/gofiber/fiber), the fastest and rapid development server build for golang and inspired by express.js.
+you can see all golang framework benchmark [here](https://github.com/smallnest/go-web-framework-benchmark)
 just take a look at this benchmark
 <img src="./.github/images/benchmark-pipeline.png">
 > benchmark from other framework
